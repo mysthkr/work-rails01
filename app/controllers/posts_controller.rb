@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(content: params[:post][:content])
+    @post = Post.new(post_params)
     if params[:back]
       render :new
     else
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
-     if @post.update(content: params[:post][:content])
+     if @post.update(post_params)
       redirect_to posts_path, notice: "ブログを編集しました！"
     else
       render :edit
@@ -37,6 +37,11 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_path, notice:"ブログを削除しました！"
+  end
+  
+  def confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
   end
   
   
