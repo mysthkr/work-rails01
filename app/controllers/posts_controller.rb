@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
-        redirect_to posts_path, notice: "投稿しました！"
+        redirect_to posts_path, notice: "つうやきを投稿しました！"
       else
         render :new
       end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
      if @post.update(post_params)
-      redirect_to posts_path, notice: "ブログを編集しました！"
+      redirect_to posts_path, notice: "つぶやきを編集しました！"
     else
       render :edit
     end
@@ -36,14 +36,13 @@ class PostsController < ApplicationController
   
   def destroy
     @post.destroy
-    redirect_to posts_path, notice:"ブログを削除しました！"
+    redirect_to posts_path, notice:"つぶやきを削除しました！"
   end
   
   def confirm
     @post = Post.new(post_params)
     render :new if @post.invalid?
   end
-  
   
   private
 

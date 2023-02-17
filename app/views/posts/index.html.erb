@@ -1,21 +1,19 @@
-
-<h1>ブログ一覧</h1>
+<h1>"つぶやき"一覧</h1>
 
 <p><%= notice %></p>
 
 <table>
   <tr>
-    <th>タイトル</th>
-    <th>内容</th>
+    <th>つぶやき内容</th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.content %></td>
-    <td><%= link_to "ブログを編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', post_path(post.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <td><%= link_to "つぶやきを編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to 'つぶやきを削除する', post_path(post.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'ブログ新規作成画面へ戻る', new_post_path %>
+<%= link_to 'つぶやき投稿画面へ戻る', new_post_path %>
